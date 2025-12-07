@@ -3,22 +3,42 @@
 // @tailwind components;
 // @tailwind utilities;
 @use "tailwindcss";
+// @source inline("{hover:,}bg-red-{50,{100..900..100},950}");
+
+@theme {
+  --color-mint-500: oklch(0.72 0.11 178);
+  --color-orange: oklch(55.3% 0.195 38.402); // orange
+  --color-primary: oklch(43.2% 0.232 292.759); // purple
+  --color-secondary: oklch(25.7% 0.09 281.288); // dark
+  --color-success: oklch(48.8% 0.243 264.376); // blue
+  --color-danger: oklch(57.7% 0.245 27.325); // red
+  --color-warning: oklch(82.8% 0.189 84.429); // yellow
+  --color-info: oklch(74.6% 0.16 232.661); // blue light
+  --color-light: oklch(97.9% 0.021 166.113); // white
+  --color-dark: oklch(14.5% 0 0); // Dark
+}
+
+button {
+  cursor: pointer;
+}
 
 // Ripple Animation
 @layer utilities {
-    @keyframes ripple-animation {
-      to {
-        transform: scale(4);
-        opacity: 0;
-      }
+  @keyframes ripple-animation {
+    to {
+      transform: scale(4);
+      opacity: 0;
     }
   }
+}
 
 @layer components {
   .typography {
     color: var(--color-gray-900);
+
     a {
-      color : var(--color-blue-500);
+      color: var(--color-blue-500);
+
       &:hover {
         color: var(--color-blue-800);
       }
