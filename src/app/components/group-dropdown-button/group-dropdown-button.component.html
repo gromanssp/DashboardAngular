@@ -1,0 +1,22 @@
+<div dGroup class="relative">
+  <button dButton appRipple variety="outline"> 1 </button>
+  <button dButton appRipple variety="outline"> 2 </button>
+  <button
+    (click)="toogleDropdown()"
+    dButton
+    appRipple
+    variety="outline">
+    Dropdown
+    <i class="fas fa-caret-down"></i>
+  </button>
+
+  @if (isOpen) {
+    <div class="absolute z-10 left-[90%] top-10 -translate-x-1/2 rounded-lg shadow-lg bg-white ring-1 ring-primary/5">
+      <div class="p-2">
+        <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md">Action</a>
+        <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md whitespace-nowrap">Other Action</a>
+      </div>
+    </div>
+  }
+
+</div>

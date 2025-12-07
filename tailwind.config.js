@@ -1,0 +1,54 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{html, js, ts, jsx, tsx}",
+  ],
+  safelist: [
+    // {
+    //   pattern: /(bg|hover:bg|active:bg)-(primary|secondary|danger|success|warning|info|light|dark)/,
+    //   variants: ['hover', 'active'],
+    // },
+    // {
+    //   pattern: /border-(primary|secondary|danger|success|warning|info|light|dark)/,
+    // },
+    // {
+    //   pattern: /text-(primary|secondary|danger|success|warning|info|light|dark)/,
+    // },
+    {
+      pattern: /(bg|text|border|shadow|hover:bg|hover:shadow)-(primary|secondary|danger|success|warning|info|light|dark)/,
+    },
+    'hover:bg-primary/80',
+    'hover:bg-secondary/80',
+    'hover:bg-success/80',
+    'hover:bg-danger/80',
+    'hover:bg-warning/80',
+    'hover:bg-info/80',
+    'hover:bg-light/80',
+    'hover:bg-dark/80',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        orange: '#f7931e',
+        primary: '#4f46e5',  // purple
+        secondary: '#4b5563',// dark,
+        success: '#22c55e',  // blue
+        danger: '#ef4444',   // red
+        warning: '#eab308',  // yellow
+        info: '#60a5fa',     // blue light
+        light: '#f8fafc',    // white
+        dark: '#000000'      // dark
+      },
+      fontFamily: {
+          sans: ['Josefin Sans', 'sans-serif'],
+          grap: ['Graphik', 'sans-serif'],
+          serif: ['Merriweather', 'serif'],
+      },
+      fontSize: {
+        'tiny': '0.625rem', // 10px
+      },
+    },
+  },
+  plugins: [],
+}
+

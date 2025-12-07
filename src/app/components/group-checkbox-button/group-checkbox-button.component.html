@@ -1,0 +1,35 @@
+<form [formGroup]="form">
+    <div dGroup>
+        <input formControlName="checkbox1" variety="outline" id="checkbox1" type="checkbox">
+        <label 
+            dButton 
+            appRipple 
+            for="checkbox1" 
+            [active]="form.get('checkbox1')?.value"
+            [variety]="'outline'" 
+            (click)="onCheckboxChange('checkbox1')"
+            >Checkbox 1
+        </label>
+        <input formControlName="checkbox2" variety="outline" id="checkbox2" type="checkbox">
+        <label 
+            dButton 
+            appRipple
+            for="checkbox2" 
+            [active]="form.get('checkbox2')?.value"
+            [variety]="'outline'" 
+            (click)="onCheckboxChange('checkbox2')"
+            > Checkbox 2
+        </label>
+        <input formControlName="checkbox3" variety="outline" id="checkbox3" type="checkbox">
+        <label 
+            dButton 
+            appRipple
+            for="checkbox3" 
+            [active]="form.get('checkbox3')?.value"
+            [variety]="'outline'" 
+            (click)="onCheckboxChange('checkbox3')"
+            >Checkbox 3
+        </label>
+    </div>
+</form>
+

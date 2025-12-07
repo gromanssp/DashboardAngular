@@ -1,0 +1,159 @@
+<p class="mx-auto max-w-lg text-balance text-center text-4xl font-grap font-semibold tracking-tight text-gray-950 sm:text-5xl pb-2">Botones Agrupados</p>
+<!-- Grupo de botones primarios -->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+    <div class="p-6">
+      <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+        Grupo de botones
+      </h5>
+      <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+        Grupo de 3 botones 
+      </p>
+    </div>
+    <div class="p-6 flex items-center justify-center">
+        <div class="p-6 pt-0 flex flex-wrap">
+            <div dGroup>
+                <button dButton appRipple color="primary"> Left </button>
+                <button dButton appRipple color="primary"> Middle </button>
+                <button dButton appRipple color="primary"> Right </button>
+            </div>      
+        </div>
+    </div>
+</div>
+<!-- Grupo de botones primarios con activo-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+    <div class="p-6">
+      <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+        Grupo de botones con uno activo
+      </h5>
+      <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+        Grupo de 3 botones y con la clase active puedes activar los botones
+      </p>
+    </div>
+    <div class="p-6 flex items-center justify-center">
+        <div class="p-6 pt-0 flex flex-wrap">
+            <div dGroup>
+                <button (click)="toogleButton()" dButton appRipple [active]="activeButton1" color="primary"> Left </button>
+                <button dButton appRipple color="primary"> Middle </button>
+                <button dButton appRipple color="primary"> Right </button>
+            </div>      
+        </div>
+    </div>
+</div>
+<!-- Grupo de botones primarios de varios tipos-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+    <div class="p-6">
+      <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+        Grupo de botones de distintos tipos
+      </h5>
+      <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+        Grupo de 3 botones y con la clase active puedes activar los botones
+      </p>
+    </div>
+    <div class="p-6 flex items-center justify-center">
+        <div class="p-6 pt-0 flex flex-wrap">
+            <div dGroup>
+                <button dButton appRipple color="success"> Left </button>
+                <button dButton appRipple color="warning"> Middle </button>
+                <button dButton appRipple color="danger"> Right </button>
+            </div>      
+        </div>
+    </div>
+</div>
+<!-- Grupo de botones con bordes-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+    <div class="p-6">
+      <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+        Grupo de botones con bordes
+      </h5>
+      <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+        Grupo de 3 botones y con la clase active puedes activar los botones
+      </p>
+    </div>
+    <div class="p-6 flex items-center justify-center">
+        <div class="p-6 pt-0 flex flex-wrap">
+            <app-group-outline-button></app-group-outline-button>   
+        </div>
+    </div>
+</div>
+<!-- Grupo de Checkboxs y Radio Buttons-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+    <div class="p-6">
+      <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+        Grupo de checkboxs y radio
+      </h5>
+      <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+        Grupo de 3 botones y con la clase active puedes cambiar el estado del botón
+      </p>
+    </div>
+    <div class="p-6 flex items-center justify-center">
+        <div class="p-6 pt-0 flex flex-wrap">
+          <app-group-checkbox-button></app-group-checkbox-button>
+        </div>
+    </div>
+    <div class="p-6 flex items-center justify-center">
+      <div class="p-6 pt-0 flex flex-wrap">
+          <app-group-radio-button></app-group-radio-button>     
+      </div>
+  </div>
+</div>
+<!-- Grupo de botones toolbar-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+  <div class="p-6">
+    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+      Grupo de botones toolbar
+    </h5>
+  </div>
+  <div class="p-6 flex items-center justify-center">
+      <div class="p-6 pt-0 flex flex-wrap">
+        <app-group-toolbar-button></app-group-toolbar-button>
+      </div>
+  </div>
+</div>
+<!-- Grupo de botones con bordes y dropdown-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+  <div class="p-6">
+    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+      Grupo de botones con bordes y dropdown
+    </h5>
+    <p class="block font-sans text-base font-light leading-relaxed text-inherit antialiased">
+      Grupo de 3 botones con un dropdown
+    </p>
+  </div>
+  <div class="p-6 flex items-center justify-center">
+      <div class="p-6 pt-0 flex flex-wrap">
+          <app-group-dropdown-button></app-group-dropdown-button>  
+      </div>
+  </div>
+</div>
+<!-- Grupo de botones ordenados verticalmente-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+  <div class="p-6">
+    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+      Grupo de botones con bordes ordenados verticalmente
+    </h5>
+  </div>
+  <div class="p-6 flex items-center justify-center">
+      <div class="p-6 pt-0 flex flex-wrap">
+          <app-group-vertical-button></app-group-vertical-button>
+      </div>
+  </div>
+</div>
+<!-- Grupo de botones ordenados verticalmente con dropdown-->
+<div class="relative flex w-full flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md my-4">
+  <div class="p-6">
+    <h5 class="mb-2 block font-sans text-xl font-semibold leading-snug tracking-normal text-blue-gray-900 antialiased">
+      Grupo de botones con bordes ordenados verticalmente con dropdown
+    </h5>
+  </div>
+  <div class="p-6 flex items-center justify-center">
+      <div class="p-6 pt-0 flex flex-wrap">
+          <app-group-vertical-dropdown-button></app-group-vertical-dropdown-button>
+      </div>
+  </div>
+</div>
+<!-- Pie de página -->
+<div class="w-full pt-5 px-4 mb-8 mx-auto">
+    <div class="text-sm text-gray-700 py-1">
+        Made with <a class="text-gray-700 font-semibold" href="https://www.material-tailwind.com/docs/html/card?ref=tailwindcomponents" target="_blank">Material Tailwind</a> by <a href="mailto:flutterdev.algebra557@passinbox.com" class="text-gray-700 font-semibold" target="_blank"> groman</a>.
+    </div>
+</div>

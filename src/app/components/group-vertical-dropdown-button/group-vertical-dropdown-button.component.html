@@ -1,0 +1,80 @@
+<div dGroup class="flex flex-col">
+  <button dButton appRipple variety="outline"> Button </button>
+  <button dButton appRipple variety="outline"> Button </button>
+  <div class="relative">
+    <button
+      dButton
+      appRipple
+      (click)="toggleDropdown('down')"
+      variety="outline">
+      Dropdown
+      <i class="fas fa-caret-down"></i>
+    </button>
+    @if (isDropdownOpen['down']) {
+      <div
+        class="absolute z-10 left-1/2 top-full mt-1 -translate-x-1/2 rounded-lg shadow-lg bg-white ring-1 ring-primary/5">
+        <div class="p-2">
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md">Action</a>
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md whitespace-nowrap">Other Action</a>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="relative">
+    <button
+      dButton
+      appRipple
+      (click)="toggleDropdown('left')"
+      variety="outline">
+      <i class="fas fa-caret-left"></i>
+      Dropdown
+    </button>
+    @if (isDropdownOpen['left']) {
+      <div
+        class="absolute z-10 right-full top-1/2 -translate-y-1/2 mr-1 rounded-lg shadow-lg bg-white ring-1 ring-primary/5">
+        <div class="p-2">
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md">Action</a>
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md whitespace-nowrap">Other Action</a>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="relative">
+    <button
+      dButton
+      appRipple
+      (click)="toggleDropdown('right')"
+      variety="outline">
+      Dropdown
+      <i class="fas fa-caret-right"></i>
+    </button>
+    @if (isDropdownOpen['right']) {
+      <div
+        class="absolute z-10 left-full top-1/2 -translate-y-1/2 ml-1 rounded-lg shadow-lg bg-white ring-1 ring-primary/5">
+        <div class="p-2">
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md">Action</a>
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md whitespace-nowrap">Other Action</a>
+        </div>
+      </div>
+    }
+  </div>
+  <div class="relative">
+    <button
+      dButton
+      appRipple
+      (click)="toggleDropdown('up')"
+      variety="outline">
+      Dropdown
+      <i class="fas fa-caret-up"></i>
+    </button>
+    @if (isDropdownOpen['up']) {
+      <div
+        class="absolute z-10 left-1/2 bottom-full mb-1 -translate-x-1/2 rounded-lg shadow-lg bg-white ring-1 ring-primary/5">
+        <div class="p-2">
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md">Action</a>
+          <a href="#" class="block p-2 hover:bg-gray-200 text-gray-900 rounded-md whitespace-nowrap">Other Action</a>
+        </div>
+      </div>
+    }
+  </div>
+</div>

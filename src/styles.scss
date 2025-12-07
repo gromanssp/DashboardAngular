@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+// @tailwind base;
+// @tailwind components;
+// @tailwind utilities;
+@use "tailwindcss";
+
+// Ripple Animation
+@layer utilities {
+    @keyframes ripple-animation {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+  }
+
+@layer components {
+  .typography {
+    color: var(--color-gray-900);
+    a {
+      color : var(--color-blue-500);
+      &:hover {
+        color: var(--color-blue-800);
+      }
+    }
+  }
+}
+
+// :root {
+//   --color-midnight: #121063;
+//   --color-tahiti: #3ab7bf;
+//   --color-bermuda: #78dcca;
+// }

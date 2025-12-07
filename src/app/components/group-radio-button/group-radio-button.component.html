@@ -1,0 +1,34 @@
+<form [formGroup]="form">
+    <div dGroup>
+        <input formControlName="selectedRadio" variety="outline" id="radio1" type="radio" [value]="'Radio1'">
+        <label 
+            dButton 
+            appRipple 
+            for="radio1" 
+            [active]="form.get('selectedRadio')?.value === 'Radio1'"
+            [variety]="'outline'" 
+            (click)="onChange('Radio1')"
+            >Radio 1
+        </label>
+        <input formControlName="selectedRadio" variety="outline" id="radio2" type="radio" [value]="'Radio2'">
+        <label 
+            dButton 
+            appRipple
+            for="radio2" 
+            [active]="form.get('selectedRadio')?.value === 'Radio2'"
+            [variety]="'outline'" 
+            (click)="onChange('Radio2')"
+            > Radio 2
+        </label>
+        <input formControlName="selectedRadio" variety="outline" id="radio3" type="radio" [value]="'Radio3'">
+        <label 
+            dButton 
+            appRipple
+            for="radio3" 
+            [active]="form.get('selectedRadio')?.value === 'Radio3'"
+            [variety]="'outline'" 
+            (click)="onChange('Radio3')"
+            >Radio 3
+        </label>
+    </div>
+</form>

@@ -1,0 +1,50 @@
+<!-- Sidebar -->
+<aside [class.expanded]="isExpanded" class="sidebar h-screen">
+  <div class="flex items-center h-16">
+    <img class="max-h-[55px]" src="assets/img/logo/da-logo-1.png" alt="letra D A">
+    <p [class.opacity-100]="isExpanded" class="opacity-0 transition-opacity duration-[1200ms] ease-out">
+      Dashboard
+      <span class="text-red-600 text-xl font-bold">Angular</span>
+    </p>
+  </div>
+  @for (item of menuItems; track item) {
+    <div class="menu">
+      <!-- Ítems del menú -->
+      <a [routerLink]="closeTabAndRoute(item, isExpanded)"
+        class="menu-item group hover:bg-point_hover rounded-md cursor-pointer"
+        [ngClass]="{'hover:bg-point_hover rounded-md cursor-pointer': isExpanded}"
+        (click)="isExpanded ? toogleSubmenu(item) : null">
+        <div class="my-2 transition-transform duration-300 disabled:group-hover:scale-100"
+          [ngClass]="{'group-hover:scale-150': isExpanded}">
+          <span class="fas {{item.icon}} fa-lg"></span>
+        </div>
+        @if (isExpanded) {
+          <span class="label ml-5">{{ item.label }}</span>
+        }
+        @if (isExpanded && item.submenu) {
+          <span
+            class="ml-auto fas transition-transform duration-300"
+          [ngClass]="{
+            'fa-chevron-down': !item.isOpen,
+            'fa-chevron-up': item.isOpen
+          }"></span>
+        }
+      </a>
+      <!-- Submenú -->
+      @if (item.submenu && item.isOpen) {
+        <div class="submenu ml-6 rounded p-2 flex flex-col items-start justify-center">
+          @for (subItem of item.submenu; track subItem) {
+            <a
+              [routerLink]="subItem.url"
+              class="hover:bg-point_hover p-2 rounded-md w-full"
+              [attr.aria-checked]="item?.isOpen ?? false">
+              <!-- Ícono del circulo -->
+              <span class="m-3 far fa-circle text-[6px] text-white"></span>
+              {{ subItem.label }}
+            </a>
+          }
+        </div>
+      }
+    </div>
+  }
+</aside>
