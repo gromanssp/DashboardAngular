@@ -1,11 +1,17 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MenuService } from '../../services/menu.service';
 import { MenuItems } from '../../models/menu-items';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './sidebar.component.html',
     styleUrl: './sidebar.component.scss',
+    imports: [
+      CommonModule,
+      RouterModule
+    ],
     standalone: true
 })
 export class SidebarComponent implements OnInit {

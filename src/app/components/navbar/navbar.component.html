@@ -1,23 +1,23 @@
 <header
   class="w-full h-16 px-5 flex items-center justify-between bg-gray-100 dark:bg-gray-800 dark:border-gray-700 shadow-sm">
   <div class="flex items-center">
-    <button (click)="toggleSidebar()" class="mr-5 my-4">
+    <button (click)="toggleSidebar()" class="btn dark:hover:bg-gray-700 mr-5 my-4">
       <!-- Icono del toggle -->
       <i class="fas fa-bars text-white"></i>
     </button>
     <h1 class="text-lg font-medium text-gray-800 dark:text-white">Dashboard</h1>
   </div>
   <div class="flex items-center gap-x-4">
-    <button class="p-2 text-gray-500 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 rounded-full">
+    <button class="btn p-2 text-gray-500 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 rounded-full">
       <!-- Icono de notificaciones -->
       <i class="fas fa-envelope-open"></i>
     </button>
-    <button class="p-2 text-gray-500 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 rounded-full">
+    <button class="btn p-2 text-gray-500 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 rounded-full">
       <!-- Icono de notificaciones -->
       <i class="fas fa-bell"></i>
     </button>
     <div class="relative">
-      <button (click)="toogleUserMenu()" type="button" class="inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900"
+      <button (click)="toogleUserMenu()" type="button" class="btn inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900"
         [attr.aria-expanded]="showUserMenu">
         <!-- Icono de notificaciones -->
         <img class="w-10 h-10 rounded-full" src="assets/img/users/profile-1.png" alt="User Profile">
