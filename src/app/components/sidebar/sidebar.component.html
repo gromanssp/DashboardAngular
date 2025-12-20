@@ -10,7 +10,7 @@
   @for (item of menuItems; track item) {
     <div class="menu">
       <!-- Ítems del menú -->
-      <a [routerLink]="closeTabAndRoute(item, isExpanded)"
+      <a [routerLink]="closeTabSubmenu(item, isExpanded)"
         class="menu-item group hover:bg-point_hover rounded-md cursor-pointer"
         [ngClass]="{'hover:bg-point_hover rounded-md cursor-pointer': isExpanded}"
         (click)="isExpanded ? toogleSubmenu(item) : null">
@@ -22,8 +22,9 @@
           <span class="label ml-5">{{ item.label }}</span>
         }
         @if (isExpanded && item.submenu) {
+          <span class="hidden md:block px-2 py-0.5 ml-10 text-xs font-medium tracking-wide text-blue-500 bg-indigo-50 rounded-full">{{item.submenu.length}}</span>
           <span
-            class="ml-auto fas transition-transform duration-300"
+          class="ml-auto fas transition-transform duration-300"
           [ngClass]="{
             'fa-chevron-down': !item.isOpen,
             'fa-chevron-up': item.isOpen

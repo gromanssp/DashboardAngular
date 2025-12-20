@@ -6,7 +6,7 @@ import { MenuItems } from '../models/menu-items';
 })
 export class MenuService {
   menuItems = [
-    { icon: 'fa-home', label: 'Inicio', url: 'home'},
+    { icon: 'fa-home', label: 'Inicio', url: 'dashboard'},
     { icon: 'fa-layer-group', 
       label: 'Botones', 
       submenu:[ 
@@ -18,7 +18,16 @@ export class MenuService {
         }],
       isOpen: false
     },
-    { icon: 'fa-edit', label: 'Formularios', url: 'forms' },
+    { icon: 'fa-edit', label: 'Formularios',
+      submenu: [
+        {
+          label: 'Login', url: 'login'
+        },
+        {
+          label: 'Registro', url: 'register'
+        }
+      ],
+       url: 'forms' },
     { icon: 'fa-chart-pie', label: 'Gráficos', url: 'charts' },
     { icon: 'fa-bell', label: 'Notificaciones', url: 'notifications' },
     { icon: 'fa-address-card', label: 'Tarjetas', url: 'cards' },

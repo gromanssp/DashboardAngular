@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MainComponent } from './components/main/main.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { NgToastComponent, TOAST_POSITIONS } from 'ng-angular-popup';
 
 @Component({
     selector: 'app-root',
@@ -10,11 +11,13 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     imports: [
       SidebarComponent,
       NavbarComponent,
-      MainComponent
+      MainComponent,
+      NgToastComponent
     ],
     standalone: true
 })
 export class AppComponent {
   title = 'dashboardAngular';
+  TOAST_POSITIONS = TOAST_POSITIONS;
   expandedSidebar = false;
 }

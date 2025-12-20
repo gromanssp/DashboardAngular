@@ -32,7 +32,7 @@ export class SidebarComponent implements OnInit {
     }
   }
 
-  closeTabAndRoute(item: any, expanded: boolean) {
+  closeTabSubmenu(item: any, expanded: boolean) {
     if(expanded == false) {
       item.isOpen = false;
     } else {

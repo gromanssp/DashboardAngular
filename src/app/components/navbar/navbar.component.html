@@ -9,7 +9,7 @@
   </div>
   <div class="flex items-center gap-x-4">
     <button class="btn p-2 text-gray-500 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 rounded-full">
-      <!-- Icono de notificaciones -->
+      <!-- Icono de mensaje -->
       <i class="fas fa-envelope-open"></i>
     </button>
     <button class="btn p-2 text-gray-500 hover:bg-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 rounded-full">
@@ -19,7 +19,7 @@
     <div class="relative">
       <button (click)="toogleUserMenu()" type="button" class="btn inline-flex items-center gap-x-1 text-sm/6 font-semibold text-gray-900"
         [attr.aria-expanded]="showUserMenu">
-        <!-- Icono de notificaciones -->
+        <!-- Icono de Usuario -->
         <img class="w-10 h-10 rounded-full" src="assets/img/users/profile-1.png" alt="User Profile">
       </button>
     </div>
@@ -45,7 +45,7 @@
                 <i class="far fa-user"></i>
               </div>
               <div>
-                <a href="#" class="font-semibold text-gray-900">
+                <a routerLink="profile" class="font-semibold text-gray-900">
                   Profile
                   <span class="absolute inset-0"></span>
                 </a>

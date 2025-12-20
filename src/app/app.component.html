@@ -2,6 +2,7 @@
     <app-sidebar [isExpanded]="expandedSidebar"></app-sidebar>
 
     <main class="w-full flex-1 bg-gray-50 dark:bg-gray-900">
+        <ng-toast [position]="TOAST_POSITIONS.TOP_CENTER" [width]="350"></ng-toast>
         <!-- Header -->
         <app-navbar (expanded)="expandedSidebar = $event"></app-navbar>
           
