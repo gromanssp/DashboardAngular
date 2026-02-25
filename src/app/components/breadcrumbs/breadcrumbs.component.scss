@@ -1,0 +1,21 @@
+.text-themecolor {
+    color: gray;
+    font-weight: 4;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.breadcrumb-item {
+    font-family: "Verdana", "Geneva", "Tahoma", "sans-serif";
+    text-transform: uppercase;
+    color: white;
+}
+
+.breadcrumb {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
