@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { RippleDirective } from "../../directives/ripple.directive";
+import { RippleDirective } from "../../shared/ui/ripple/ripple.directive";
 import { RouterLink } from '@angular/router';
 
 @Component({

@@ -2,9 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { DButtonDirective } from '../../directives/buttons/d-button.directive';
-import { RippleDirective } from '../../directives/ripple.directive';
-import { BtnGroupDirective } from '../../directives/buttons/btn-group.directive';
+import { DButtonDirective } from '../../shared/ui/buttons/d-button.directive';
+import { RippleDirective } from '../../shared/ui/ripple/ripple.directive';
+import { BtnGroupDirective } from '../../shared/ui/buttons/btn-group.directive';
 
 @Component({
     selector: 'app-group-radio-button',

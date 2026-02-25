@@ -1,11 +1,17 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { UserModel } from '../../models/user-model';
 import { ImgPipe } from '../../pipe/img.pipe';
-import { RippleDirective } from "../../directives/ripple.directive";
-import { DButtonDirective } from "../../directives/buttons/d-button.directive";
+import { RippleDirective } from '../../shared/ui/ripple/ripple.directive';
+import { DButtonDirective } from '../../shared/ui/buttons/d-button.directive';
 import { UserService } from '../../services/user.service';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-profile',
@@ -17,43 +23,58 @@ import { UserService } from '../../services/user.service';
     ImgPipe,
     ReactiveFormsModule,
     RippleDirective,
-    DButtonDirective
-]
+    DButtonDirective,
+  ],
 })
 export class ProfileComponent implements OnInit {
-  userModel : UserModel = {fullName: 'Jorge', email: '', password: '', google: false, img: ''};
+  currentUser!: UserModel;
   profileForm!: FormGroup;
 
   imgUp: File | undefined;
   imgTemp: any;
+  imgLn: string = 'assets/img/sociales/linkedin-96.png';
+  imgFb: string = 'assets/img/sociales/facebook-96.png';
 
   constructor(
-    private userService: UserService
-  ) {
-    
-  }
+    private userService: UserService,
+    private toast: NgToastService
+  ) {}
 
   ngOnInit(): void {
+    // load User from Storage or default value
+    this.userService.userModel != null
+      ? (this.currentUser = this.userService.userModel)
+      : (this.currentUser = {
+          fullName: 'Jorge',
+          email: '',
+          password: '',
+          google: false,
+          img: '',
+        });
+
     this.profileForm = new FormGroup({
-      fullName: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
-      google: new FormControl(false),
-      img: new FormControl(null),
-      role: new FormControl(null),
+      fullName: new FormControl('', [Validators.required, Validators.min(3)]),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
-    
   }
 
   storeForm(): void {
-    this.userService.updateUser(this.userModel).subscribe();
+    if (this.profileForm.invalid) {
+      this.toast.danger('Form Invalid');
+    }
+    const updatedUser: UserModel = {
+      ...this.currentUser, // conserva id y campos no editables
+      ...this.profileForm.value, // sobrescribe lo editable
+    };
+    console.log(updatedUser);
+    this.userService.updateUser(updatedUser).subscribe({
+      next: (_) => {},
+      error: (err) =>
+        this.toast.danger(err.error.errors.message, err.error.mensaje),
+    });
   }
 
-  selectImg( img: File | undefined): void {
+  selectImg(img: File | undefined): void {}
 
-  }
-
-  changeImg() {
-
-  }
+  changeImg() {}
 }

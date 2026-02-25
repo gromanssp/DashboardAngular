@@ -100,7 +100,7 @@ export class UserService {
     .pipe(
       map( (resp: any) => {
         console.log(`UserService: ${usuario}, Resp: ${resp}, URL: ${url}`);
-        this.storeStorage( resp.id, resp.token, resp.Usuario, resp.menu);
+        this.storeStorage( resp.id, resp.token, resp.usuario, resp.menu);
         return true;
       }),
       catchError( err => {
@@ -131,7 +131,6 @@ export class UserService {
     return this.http.put( url, user )
       .pipe(
         map(( resp: any ) => {
-
         if ( user._id === this.userModel?._id ) {
           const usuarioDB: UserModel = resp.usuario;
           this.storeStorage( usuarioDB._id ?? '', this.token, usuarioDB, this.menu );
@@ -141,7 +140,6 @@ export class UserService {
         return true;
       }),
         catchError( err => {
-          this.toast.danger(err.error.errors.message, err.error.mensaje);
           return throwError(() => err );
         })
       );

@@ -7,9 +7,9 @@ import { GroupCheckboxButtonComponent } from '../../components/group-checkbox-bu
 import { GroupDropdownButtonComponent } from '../../components/group-dropdown-button/group-dropdown-button.component';
 import { GroupRadioButtonComponent } from '../../components/group-radio-button/group-radio-button.component';
 import { GroupVerticalDropdownButtonComponent } from '../../components/group-vertical-dropdown-button/group-vertical-dropdown-button.component';
-import { BtnGroupDirective } from '../../directives/buttons/btn-group.directive';
-import { DButtonDirective } from '../../directives/buttons/d-button.directive';
-import { DGroupToolbarDirective } from '../../directives/buttons/d-group-toolbar.directive';
+import { BtnGroupDirective } from '../../shared/ui/buttons/btn-group.directive';
+import { DButtonDirective } from '../../shared/ui/buttons/d-button.directive';
+import { DGroupToolbarDirective } from '../../shared/ui/buttons/d-group-toolbar.directive';
 import { GroupVerticalButtonComponent } from '../../components/group-vertical-button/group-vertical-button.component';
 
 @Component({

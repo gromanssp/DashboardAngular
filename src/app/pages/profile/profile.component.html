@@ -1,45 +1,24 @@
 <div class="isolate bg-gray-900 px-6 py-24 sm:py-32 lg:px-8">
-    <!-- <div aria-hidden="true" class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80">
-        <div style="
-        clip-path: polygon(
-          74.1% 44.1%,
-          100% 61.6%,
-          97.5% 26.9%,
-          85.5% 0.1%,
-          80.7% 2%,
-          72.5% 32.5%,
-          60.2% 62.4%,
-          52.4% 68.1%,
-          47.5% 58.3%,
-          45.2% 34.5%,
-          27.5% 76.7%,
-          0.1% 64.9%,
-          17.9% 100%,
-          27.6% 76.8%,
-          76.1% 97.7%,
-          74.1% 44.1%
-        );
-      " class="relative left-1/2 -z-10 aspect-1155/678 w-144.5 max-w-none -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-20 sm:left-[calc(50%-40rem)] sm:w-288.75">
-        </div>
-    </div> -->
     <div class="mx-auto max-w-2xl text-center">
         <h2 class="text-4xl font-semibold tracking-tight text-balance text-white sm:text-5xl">
             Profile User
         </h2>
-        <p class="mt-2 text-lg/8 text-gray-400">{{ this.userModel.fullName }}</p>
+        <p class="mt-2 text-lg/8 text-gray-400">{{ this.currentUser.fullName }}</p>
     </div>
     <!-- Contact Form -->
     <div class="mt-8 mx-4">
         <div class="grid grid-cols-1 md:grid-cols-2">
             <div class="p-6 mr-2 bg-gray-100 dark:bg-gray-800 sm:rounded-lg">
                 <div class="flex items-center justify-center gap-x-6">
-                    <img [src]="imgTemp ? imgTemp : userModel.img | img"
-                        alt="" class="size-46 rounded-full outline-1 -outline-offset-1 outline-white/10" />
+                    <!-- Box to select img from img target -->
+                    <input #fileInput hidden accept="image/*" class=" text-white outline-1 p-4 m-2"
+                        (change)="selectImg( $event.target.files?.[0] )" type="file" />
+                    <img (click)="fileInput.click()" [src]="imgTemp ? imgTemp : currentUser.img | img" alt=""
+                        class="size-46 rounded-full outline-1 -outline-offset-1 outline-white/10" />
                 </div>
 
-                <div class="flex items-center justify-center gap-x-6 mt-4">
-                    <input class=" text-white outline-1 p-4 m-2" (change)="selectImg( $event.target.files?.[0] )" type="file" />
-                </div>
+                <!-- <div class="flex items-center justify-center mt-4">
+                </div> -->
 
                 <div class="mt-2">
                     <button dButton appRipple (click)="changeImg()" [disabled]="!imgUp" type="button"
@@ -52,32 +31,18 @@
                 <div class="bg-gray-900 w-full py-5 sm:py-8 mt-2">
                     <div class="mx-auto w-full max-w-7xl px-6 lg:px-8">
                         <div
-                            class="mx-auto mt-2 grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
-                            <img width="158" height="48"
-                                src="https://tailwindcss.com/plus-assets/img/logos/158x48/transistor-logo-white.svg"
-                                alt="Transistor" class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" />
+                            class="mx-auto mt-2 grid max-w-lg grid-cols-3 items-center gap-y-10 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+                            <img width="50" height="48" [src]="imgLn" alt="linkedin"
+                                class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" />
 
-                            <img width="158" height="48"
-                                src="https://tailwindcss.com/plus-assets/img/logos/158x48/reform-logo-white.svg"
-                                alt="Reform" class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" />
+                            <img width="158" height="58" [src]="imgFb" alt="Facebook"
+                                class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" />
 
-                            <img width="158" height="48"
-                                src="https://tailwindcss.com/plus-assets/img/logos/158x48/tuple-logo-white.svg"
-                                alt="Tuple" class="col-span-2 max-h-12 w-full object-contain lg:col-span-1" />
+                            <i class="far fa-envelope mr-2 fa-2xl" style="color: rgb(0, 119, 255);"></i>
 
-                            <img width="158" height="48"
-                                src="https://tailwindcss.com/plus-assets/img/logos/158x48/savvycal-logo-white.svg"
-                                alt="SavvyCal"
-                                class="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1" />
-
-                            <img width="158" height="48"
-                                src="https://tailwindcss.com/plus-assets/img/logos/158x48/statamic-logo-white.svg"
-                                alt="Statamic"
-                                class="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1" />
                         </div>
                     </div>
                 </div>
-
             </div>
 
             <form ngNativeValidate [formGroup]="profileForm" (ngSubmit)="storeForm()"
@@ -85,13 +50,44 @@
                 <div class="flex flex-col">
                     <label for="name" class="block text-sm/6 font-semibold text-white">Username</label>
                     <input formControlName="fullName" type="name" name="fullName" id="name" placeholder="Full Name"
+                        
                         class="w-full mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
+                        <!-- Validation  -->
+                    @if (profileForm.controls['fullName'].invalid && (profileForm.controls['fullName'].dirty ||
+                    profileForm.controls['fullName'].touched)) {
+                        <div class="rounded-md bg-white/5 dark:bg-gray-900 m-1 p-2 ring-1 ring-danger/25 text-danger/55">
+                            @if (profileForm.controls['fullName'].hasError('required')) {
+                            <div>Name is required.</div>
+                            }
+                            @if (profileForm.controls['fullName'].hasError('minlength')) {
+                            <div>Name must be at least 4 characters long.</div>
+                            }
+                            @if (profileForm.controls['fullName'].hasError('forbiddenName')) {
+                            <div>Name cannot be Bob.</div>
+                            }
+                        </div>
+                    }
                 </div>
 
                 <div class="flex flex-col mt-2">
                     <label for="email" class="block text-sm/6 font-semibold text-white">Email</label>
-                    <input formControlName="email" type="email" name="email" id="email" placeholder="Email"
+                    <input formControlName="email" type="email" name="email" id="email" placeholder="Email" required
                         class="w-full mt-2 py-3 px-3 rounded-lg bg-white dark:bg-gray-800 border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-gray-50 font-semibold focus:border-blue-500 focus:outline-none" />
+
+                        @if (profileForm.controls['email'].invalid && (profileForm.controls['email'].dirty ||
+                    profileForm.controls['email'].touched)) {
+                        <div class="rounded-md bg-white/5 dark:bg-gray-900 m-1 p-2 ring-1 ring-danger/25 text-danger/55">
+                            @if (profileForm.controls['email'].hasError('required')) {
+                            <div>Email is required.</div>
+                            }
+                            @if (profileForm.controls['email'].hasError('minlength')) {
+                            <div>Name must be at least 4 characters long.</div>
+                            }
+                            @if (profileForm.controls['email'].hasError('email')) {
+                            <div>Email not valid</div>
+                            }
+                        </div>
+                    }
                 </div>
 
                 <div class="flex gap-x-4 sm:col-span-2 mt-2">
@@ -100,8 +96,7 @@
                             class="group relative inline-flex w-8 shrink-0 rounded-full bg-white/5 p-px inset-ring inset-ring-white/10 outline-offset-2 outline-indigo-500 transition-colors duration-200 ease-in-out has-checked:bg-indigo-500 has-focus-visible:outline-2">
                             <span
                                 class="size-4 rounded-full bg-white shadow-xs ring-1 ring-gray-900/5 transition-transform duration-200 ease-in-out group-has-checked:translate-x-3.5"></span>
-                            <input id="record" type="checkbox" name="record"
-                                aria-label="Record"
+                            <input id="record" type="checkbox" name="record" aria-label="Record"
                                 class="absolute inset-0 appearance-none focus:outline-hidden" />
                         </div>
                     </div>
@@ -112,12 +107,11 @@
                 </div>
 
                 <div class="mt-10 w-full">
-                    <button type="submit"
+                    <button dButton color="info" type="submit" [disabled]="profileForm.invalid"
                         class="block w-full rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
                         Save
                     </button>
                 </div>
-
             </form>
         </div>
     </div>
