@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { TestBed } from '@angular/core/testing';
 
 import { UpService } from './up.service';
@@ -6,7 +8,8 @@ describe('UpService', () => {
   let service: UpService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [provideRouter([])],});
     service = TestBed.inject(UpService);
   });
 

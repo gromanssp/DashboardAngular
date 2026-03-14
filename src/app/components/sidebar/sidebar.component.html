@@ -8,21 +8,26 @@
     </p>
   </div>
   @for (item of menuItems; track item) {
-    <div class="menu">
+    <div class="menu relative group/item">
       <!-- Ítems del menú -->
       <a [routerLink]="closeTabSubmenu(item, isExpanded)"
         class="menu-item group hover:bg-point_hover rounded-md cursor-pointer"
-        [ngClass]="{'hover:bg-point_hover rounded-md cursor-pointer': isExpanded}"
+        [ngClass]="{
+          'hover:bg-point_hover rounded-md cursor-pointer': isExpanded
+        }"
+        routerLinkActive="bg-point_hover text-white font-bold"
         (click)="isExpanded ? toogleSubmenu(item) : null">
         <div class="my-2 transition-transform duration-300 disabled:group-hover:scale-100"
           [ngClass]="{'group-hover:scale-150': isExpanded}">
-          <span class="fas {{item.icon}} fa-lg"></span>
+          <span class="fas {{item.icon}} fa-lg"
+            [ngClass]="{'text-blue-400': !isExpanded && closeTabSubmenu(item, isExpanded) === null && item.submenu}"
+          ></span>
         </div>
         @if (isExpanded) {
           <span class="label ml-5">{{ item.label }}</span>
         }
         @if (isExpanded && item.submenu) {
-          <span class="hidden md:block px-2 py-0.5 ml-10 text-xs font-medium tracking-wide text-blue-500 bg-indigo-50 rounded-full">{{item.submenu.length}}</span>
+          <span class="hidden md:block px-2 py-0.5 ml-10 text-xs font-medium tracking-wide text-blue-500 bg-indigo-50 rounded-full dark:bg-blue-900 dark:text-blue-300">{{item.submenu.length}}</span>
           <span
           class="ml-auto fas transition-transform duration-300"
           [ngClass]="{
@@ -31,19 +36,38 @@
           }"></span>
         }
       </a>
-      <!-- Submenú -->
-      @if (item.submenu && item.isOpen) {
-        <div class="submenu ml-6 rounded p-2 flex flex-col items-start justify-center">
+      
+      <!-- Submenú Normal (Expandido) -->
+      @if (item.submenu && item.isOpen && isExpanded) {
+        <div class="submenu mx-2 ml-6 rounded p-2 flex flex-col items-start justify-center gap-1">
           @for (subItem of item.submenu; track subItem) {
             <a
               [routerLink]="subItem.url"
-              class="hover:bg-point_hover p-2 rounded-md w-full"
+              routerLinkActive="bg-blue-50 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400 font-bold"
+              class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors font-semibold w-full"
               [attr.aria-checked]="item?.isOpen ?? false">
-              <!-- Ícono del circulo -->
-              <span class="m-3 far fa-circle text-[6px] text-white"></span>
               {{ subItem.label }}
             </a>
           }
+        </div>
+      }
+
+      <!-- Submenú Flotante (Colapsado) -->
+      @if (item.submenu && !isExpanded) {
+        <div class="absolute left-14 top-0 hidden group-hover/item:flex flex-col bg-[#1e293b] shadow-xl rounded-md w-48 z-[100] border border-gray-700 animate-fade-in origin-left p-2 gap-1">
+          <div class="px-4 py-2 font-bold text-gray-400 border-b border-gray-700 uppercase text-xs tracking-wider mb-1">
+            {{ item.label }}
+          </div>
+          <div class="flex flex-col gap-1">
+            @for (subItem of item.submenu; track subItem) {
+              <a
+                [routerLink]="subItem.url"
+                routerLinkActive="bg-blue-900/30 text-blue-400 font-bold"
+                class="px-4 py-2.5 rounded-lg text-sm text-gray-300 hover:text-white hover:bg-gray-700/50 transition-colors font-semibold w-full">
+                {{ subItem.label }}
+              </a>
+            }
+          </div>
         </div>
       }
     </div>

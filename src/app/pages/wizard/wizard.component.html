@@ -1,0 +1,113 @@
+<div class="mb-6">
+  <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Registration Wizard</h2>
+  <p class="text-gray-600 dark:text-gray-400">A multi-step procedure to guide users through complex form workflows.</p>
+</div>
+
+<div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-sm p-6 overflow-hidden">
+  
+  <!-- Stepper Header -->
+  <div class="mb-8">
+    <ol class="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base">
+      @for (step of steps; track step; let i = $index; let last = $last) {
+        <li [class.text-blue-600]="i <= currentStep" [class.dark:text-blue-500]="i <= currentStep" 
+            class="flex items-center" 
+            [ngClass]="{'w-full sm:after:content-[\'\'] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-1 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700': !last}">
+          
+          <span class="flex items-center shrink-0">
+            @if (i < currentStep) {
+              <!-- Completed Icon -->
+              <span class="w-8 h-8 flex items-center justify-center bg-blue-100 rounded-full dark:bg-blue-900 border border-blue-600 text-blue-600">
+                <i class="fas fa-check"></i>
+              </span>
+            } @else if (i === currentStep) {
+              <!-- Current Icon -->
+              <span class="w-8 h-8 flex items-center justify-center border border-blue-600 bg-blue-600 text-white rounded-full">
+                {{ i + 1 }}
+              </span>
+            } @else {
+              <!-- Pending Icon -->
+              <span class="w-8 h-8 flex items-center justify-center border border-gray-400 rounded-full dark:border-gray-300">
+                {{ i + 1 }}
+              </span>
+            }
+            <span class="hidden sm:inline-flex ml-2">{{ step.title }}</span>
+          </span>
+        </li>
+      }
+    </ol>
+  </div>
+
+  <!-- Step Content Views -->
+  <div class="min-h-[250px] p-4 bg-gray-50 dark:bg-gray-900 rounded-lg border border-gray-100 dark:border-gray-700" style="animation: fade-in 0.3s ease-out;">
+    @switch (currentStep) {
+      @case (0) {
+        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Personal Information</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First Name</label>
+            <input type="text" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="John">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Last Name</label>
+            <input type="text" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Doe">
+          </div>
+        </div>
+      }
+      @case (1) {
+        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Account Setup</h3>
+        <div class="grid grid-cols-1 gap-4 max-w-md">
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email Address</label>
+            <input type="email" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="john@company.com">
+          </div>
+          <div>
+            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <input type="password" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="••••••••">
+          </div>
+        </div>
+      }
+      @case (2) {
+        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Preferences</h3>
+        <p class="text-gray-600 dark:text-gray-400 mb-4">Choose how you want to receive updates.</p>
+        <div class="flex items-center mb-4">
+            <input id="checkbox-1" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="checkbox-1" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email notifications</label>
+        </div>
+        <div class="flex items-center mb-4">
+            <input id="checkbox-2" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+            <label for="checkbox-2" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">SMS alerts</label>
+        </div>
+      }
+      @case (3) {
+        <h3 class="text-lg font-bold text-gray-800 dark:text-white mb-4">Review</h3>
+        <p class="text-gray-600 dark:text-gray-400">Please verify your entries before completing the registration.</p>
+        <div class="mt-4 p-4 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+            <p class="text-sm dark:text-gray-300"><span class="font-bold">Name:</span> John Doe</p>
+            <p class="text-sm dark:text-gray-300 mt-2"><span class="font-bold">Email:</span> john&#64;company.com</p>
+            <p class="text-sm dark:text-gray-300 mt-2"><span class="font-bold">Notifications:</span> Email only</p>
+        </div>
+      }
+    }
+  </div>
+
+  <!-- Wizard Footer Actions -->
+  <div class="mt-6 flex justify-between items-center">
+    <button [disabled]="currentStep === 0" (click)="prevStep()"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all">
+      Previous
+    </button>
+    
+    @if (currentStep === steps.length - 1) {
+      <button (click)="submit()"
+        class="text-white bg-green-600 hover:bg-green-700 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800 transition-colors">
+        Complete Form
+      </button>
+    } @else {
+      <button (click)="nextStep()"
+        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 transition-colors">
+        Next Step
+      </button>
+    }
+  </div>
+
+</div>

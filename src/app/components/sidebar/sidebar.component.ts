@@ -35,9 +35,8 @@ export class SidebarComponent implements OnInit {
   closeTabSubmenu(item: any, expanded: boolean) {
     if(expanded == false) {
       item.isOpen = false;
-    } else {
-      return item.url;
     }
+    return item.url || null;
   }
 
 }

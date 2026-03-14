@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { DDropdownMenuDirective } from './d-dropdown-menu.directive';
 
 describe('DDropdownMenuDirective', () => {

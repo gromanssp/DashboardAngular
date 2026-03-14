@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ButtonsGroupComponent } from './buttons-group.component';
@@ -8,7 +10,8 @@ describe('ButtonsGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonsGroupComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, ButtonsGroupComponent]
     })
     .compileComponents();
 

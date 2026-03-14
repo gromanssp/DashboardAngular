@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupToolbarButtonComponent } from './group-toolbar-button.component';
@@ -8,7 +10,8 @@ describe('GroupToolbarButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GroupToolbarButtonComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, GroupToolbarButtonComponent]
     })
     .compileComponents();
 

@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupCheckboxButtonComponent } from './group-checkbox-button.component';
@@ -8,7 +10,8 @@ describe('GroupCheckboxButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GroupCheckboxButtonComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, GroupCheckboxButtonComponent]
     })
     .compileComponents();
 

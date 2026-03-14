@@ -1,2 +1,26 @@
-<p class="mx-auto max-w-lg text-balance text-center text-4xl font-grap font-semibold tracking-tight text-gray-950 sm:text-5xl">Formularios</p>
+<div class="mb-6">
+  <h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Forms</h2>
+  <p class="text-gray-600 dark:text-gray-400">Examples and usage guidelines for form control styles, layout options, and custom components for creating a wide variety of forms.</p>
+</div>
 
+<app-code-snippet title="Login Form" description="A standard login form with inputs and a button." [code]="formCode1">
+  <form class="w-full max-w-sm bg-white dark:bg-gray-800 p-6 rounded-xl border border-gray-100 dark:border-gray-700 shadow-sm">
+    <div class="mb-4">
+      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="username">
+        Username
+      </label>
+      <input class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 leading-tight focus:outline-none focus:ring focus:border-blue-500 transition-shadow" id="username" type="text" placeholder="Username">
+    </div>
+    <div class="mb-6">
+      <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="password">
+        Password
+      </label>
+      <input class="shadow-sm appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 mb-3 leading-tight focus:outline-none focus:ring focus:border-blue-500 transition-shadow" id="password" type="password" placeholder="******************">
+    </div>
+    <div class="flex items-center justify-between">
+      <button class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg focus:outline-none focus:ring w-full transition-colors cursor-pointer" type="button">
+        Sign In
+      </button>
+    </div>
+  </form>
+</app-code-snippet>

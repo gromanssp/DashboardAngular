@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupRadioButtonComponent } from './group-radio-button.component';
@@ -8,7 +10,8 @@ describe('GroupRadioButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GroupRadioButtonComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, GroupRadioButtonComponent]
     })
     .compileComponents();
 

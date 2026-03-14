@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChartsComponent } from './charts.component';
@@ -8,7 +10,8 @@ describe('ChartsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ChartsComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, ChartsComponent]
     })
     .compileComponents();
 

@@ -3,7 +3,7 @@
   .sidebar {
     color: #fff;
     width: 3.5rem;
-    transition: width 0.5s;
+    transition: width 400ms cubic-bezier(0.4, 0, 0.2, 1);
     overflow: hidden;
   }
   

@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { BtnGroupDirective } from './btn-group.directive';
 
 describe('BtnGroupDirective', () => {

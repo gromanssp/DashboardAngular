@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupVerticalButtonComponent } from './group-vertical-button.component';
@@ -8,7 +10,8 @@ describe('GroupVerticalButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GroupVerticalButtonComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, GroupVerticalButtonComponent]
     })
     .compileComponents();
 

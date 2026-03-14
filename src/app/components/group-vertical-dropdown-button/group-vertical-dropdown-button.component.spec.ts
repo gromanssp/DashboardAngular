@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupVerticalDropdownButtonComponent } from './group-vertical-dropdown-button.component';
@@ -8,7 +10,8 @@ describe('GroupVerticalDropdownButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GroupVerticalDropdownButtonComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, GroupVerticalDropdownButtonComponent]
     })
     .compileComponents();
 

@@ -1,2 +1,67 @@
-<p class="mx-auto max-w-lg text-balance text-center text-4xl font-grap font-semibold tracking-tight text-gray-950 sm:text-5xl">Gráficos</p>
+<div class="mb-6 flex flex-col items-start gap-2">
+  <h2 class="text-3xl font-bold text-gray-900 dark:text-white">Analytics Overview</h2>
+  <p class="text-gray-500 dark:text-gray-400">Track and analyze your application's growth and user engagement metrics.</p>
+</div>
 
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  
+  <!-- CSS Bar Chart -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 h-[400px] flex flex-col">
+    <div class="flex justify-between items-center mb-6">
+      <h3 class="text-lg font-bold text-gray-800 dark:text-white">Monthly Revenue</h3>
+      <span class="text-sm font-medium text-green-500 bg-green-50 dark:bg-green-500/10 px-2 py-1 rounded-md">+12.5%</span>
+    </div>
+    
+    <div class="flex-1 flex items-end justify-between gap-2 sm:gap-4 mt-auto border-b border-gray-200 dark:border-gray-700 pb-2">
+      @for (item of barChartData; track item.label) {
+        <div class="flex flex-col items-center w-full group">
+          <!-- Tooltip on hover -->
+          <div class="opacity-0 group-hover:opacity-100 transition-opacity absolute -mt-10 bg-gray-900 text-white text-xs py-1 px-2 rounded pointer-events-none z-10">
+            ${{ item.value }}k
+          </div>
+          <!-- Bar -->
+          <div class="w-full bg-blue-100 dark:bg-blue-900/30 rounded-t-sm relative overflow-hidden h-48 flex items-end justify-center group-hover:bg-blue-200 dark:group-hover:bg-blue-900/50 transition-colors">
+            <div class="w-full bg-blue-600 dark:bg-blue-500 rounded-t-sm slide-up-bar" [style.height.%]="item.value"></div>
+          </div>
+          <!-- Label -->
+          <span class="text-xs text-gray-500 dark:text-gray-400 mt-2">{{ item.label }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Horizontal Progress Chart (Sales) -->
+  <div class="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col">
+    <div class="mb-6">
+      <h3 class="text-lg font-bold text-gray-800 dark:text-white">Sales by Product</h3>
+      <p class="text-sm text-gray-500 dark:text-gray-400">Subscription breakdown</p>
+    </div>
+
+    <div class="flex flex-col gap-5 mt-2">
+      @for (item of salesData; track item.product) {
+        <div>
+          <div class="flex justify-between items-center mb-1.5">
+            <span class="text-sm font-medium text-gray-700 dark:text-gray-200">{{ item.product }}</span>
+            <span class="text-sm font-bold text-gray-900 dark:text-white">{{ item.percentage }}%</span>
+          </div>
+          <div class="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
+            <div class="{{ item.color }} h-2 rounded-full slide-in-progress" [style.width.%]="item.percentage"></div>
+          </div>
+        </div>
+      }
+    </div>
+
+    <!-- Summary Stats -->
+    <div class="mt-auto pt-6 border-t border-gray-100 dark:border-gray-700 grid grid-cols-2 gap-4">
+      <div>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Total Sales</p>
+        <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">$124,500</p>
+      </div>
+      <div>
+        <p class="text-sm text-gray-500 dark:text-gray-400">Active Users</p>
+        <p class="text-2xl font-bold text-gray-900 dark:text-white mt-1">12,302</p>
+      </div>
+    </div>
+  </div>
+
+</div>

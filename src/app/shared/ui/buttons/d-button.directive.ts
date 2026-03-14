@@ -168,7 +168,7 @@ export class DButtonDirective implements OnInit, OnChanges {
 
   private applyCommonClasses() {
     const nativeEl = this.el.nativeElement;
-    const c = this.colorMap[this.color];
+    const c = this.colorMap[this.color] || this.colorMap['primary'];
 
     // Clases comunes a todos los botones
     this.renderer.addClass(nativeEl, 'select-none');
@@ -311,7 +311,7 @@ export class DButtonDirective implements OnInit, OnChanges {
 
   private updateActiveState() {
     const nativeEl = this.el.nativeElement;
-    const c = this.colorMap[this.color];
+    const c = this.colorMap[this.color] || this.colorMap['primary'];
 
     if (this.active) {
       switch (this.variety) {

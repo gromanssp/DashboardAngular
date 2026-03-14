@@ -6,11 +6,9 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
-        RouterModule.forRoot([])
-      ],
-      declarations: [
+        RouterModule.forRoot([]),
         AppComponent
-      ],
+      ]
     }).compileComponents();
   });
 
@@ -26,10 +24,10 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('dashboardAngular');
   });
 
-  it('should render title', () => {
+  it('should render router-outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, dashboardAngular');
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 });

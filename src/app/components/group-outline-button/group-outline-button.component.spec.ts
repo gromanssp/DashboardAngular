@@ -1,3 +1,5 @@
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { provideRouter } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GroupOutlineButtonComponent } from './group-outline-button.component';
@@ -8,7 +10,8 @@ describe('GroupOutlineButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GroupOutlineButtonComponent]
+      providers: [provideRouter([])],
+      imports: [NoopAnimationsModule, GroupOutlineButtonComponent]
     })
     .compileComponents();
 
